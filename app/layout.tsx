@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,12 +25,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  /**
+   * Main functionalities: 
+   *  - Provide themeing
+   *  - Display a button to reset
+   *  - restrict display area to the middle 75%
+   */
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Button className="absolute left-10 top-10 rounded-md p-10" asChild>
+            <Link href="/" className="w-full">Reset</Link>
+          </Button>
+          <div className="w-3/4 h-screen">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );
