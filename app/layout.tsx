@@ -26,15 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   /**
-   * Main functionalities: 
+   * Main functionalities:
    *  - Provide themeing
-   *  - Display a button to reset
    *  - restrict display area to the middle 75%
    */
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center`}
       >
         <ThemeProvider
           attribute="class"
@@ -42,10 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Button className="absolute left-10 top-10 rounded-md p-10" asChild>
-            <Link href="/" className="w-full">Reset</Link>
-          </Button>
-          <div className="w-3/4 h-screen">{children}</div>
+          <div className="w-3/4 h-screen relative">{children}</div>
         </ThemeProvider>
       </body>
     </html>
