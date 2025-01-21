@@ -1,29 +1,40 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { LICENSES } from "./licenses";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
-
-const LICENSES: Record<string, ReactNode> = {
-  React: (
-    <Link href="https://github.com/facebook/react">Link to the license</Link>
-  ),
-};
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Page() {
   return (
     <>
-      <h2>Credits</h2>
-      <h5>This project uses the following open source libraries:</h5>
-      <Command className="overflow-auto">
-        <CommandList>
+      <h1 className="text-6xl p-4 pl-0">Credits</h1>
+      <h5 className="mb-2">
+        This project uses the following open source libraries:
+      </h5>
+      <Command className="h-fit max-h-4/5 mb-5">
+        <CommandList className="overflow-auto max-h-none">
           {Object.entries(LICENSES)
             .toSorted(([n1, _], [n2, __]) => n1.localeCompare(n2))
             .map(([name, childNode]) => (
-              <CommandItem key={name}>{childNode}</CommandItem>
+              <Dialog key={name}>
+                <DialogTrigger className="flex flex-col">
+                  <CommandItem>{name}</CommandItem>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogTitle>{name}</DialogTitle>
+                  {childNode}
+                </DialogContent>
+              </Dialog>
             ))}
         </CommandList>
       </Command>
-      <Button className="absolute left-10 bottom-10" asChild>
+      <Button asChild>
         <Link href="/">Home</Link>
       </Button>
     </>

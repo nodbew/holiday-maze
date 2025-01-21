@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -41,7 +41,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="w-3/4 h-screen relative">{children}</div>
+          <div className="flex justify-center">
+            <div className="w-3/4 h-screen">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>

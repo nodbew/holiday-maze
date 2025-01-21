@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { SITUATIONS } from "../constants/staticData";
+import { SITUATIONS } from "../constants/mazeData";
 
 type UnremoveableArray<T extends Array<unknown>> = Pick<
   T,
