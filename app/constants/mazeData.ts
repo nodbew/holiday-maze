@@ -10,8 +10,8 @@ export const SITUATIONS: Record<string, Situation> = {
     possibleActions: [
       {
         description: "Left",
-        callback: (_, __, ___, setSituationHistory) =>{console.log("LEFT")
-          setSituationHistory((prev) => [...prev, "スタート"])},
+        callback: (_, __, ___, setSituationHistory) =>
+          setSituationHistory((prev) => [...prev, "スタート"]),
       },
       {
         description: "Right",

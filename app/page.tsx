@@ -11,7 +11,7 @@ import {
 
 export default function Page() {
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col h-full">
       <h1 className="self-start w-full mt-5 p-2 font-bold text-center text-9xl">
         TITLE
       </h1>
@@ -25,8 +25,9 @@ export default function Page() {
           <div className="bg-black w-full h-0.5 absolute left-0 top-5" />
         </div>
       </div>
+      <div className="flex flex-row mb-4 mt-auto h-[12%]">
       <Dialog>
-        <DialogTrigger className="absolute bottom-0 left-0 w-1/4 h-9 bg-black text-white rounded-md">
+        <DialogTrigger className="ml-40 mr-auto w-1/12 h-full bg-black text-white rounded-full">
           info
         </DialogTrigger>
         <DialogContent>
@@ -34,7 +35,7 @@ export default function Page() {
             <DialogTitle className="text-center text-3xl border-b-2 border-black pb-1 mb-3">
               Story
             </DialogTitle>
-            <DialogDescription className="whitespace-pre-line text-black">
+            <DialogDescription className="whitespace-pre-line text-black text-lg">
               {`One morning, you woke up in a dungeon...
               If you make a wrong decision, you will be trapped forever.
               Select the right options to escape!
@@ -45,9 +46,10 @@ export default function Page() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <Button className="absolute bottom-0 right-0 w-1/4 h-9" asChild>
+      <Button className="mr-40 ml-auto w-1/12 h-full bg-black text-white rounded-full" asChild>
         <Link href="/credits">Credits</Link>
       </Button>
+      </div>
     </div>
   );
 }

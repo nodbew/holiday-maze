@@ -18,7 +18,7 @@ export const LICENSES: Record<string, ReactNode> = {
   ),
   "Class Variance Authority": (
     <>
-      <p className="whitespace-pre-line">{`
+      <p className="whitespace-pre max-h-96 overflow-auto">{`
       ----- COPY OF THE LICENSE -----
                                  Apache License
                            Version 2.0, January 2004

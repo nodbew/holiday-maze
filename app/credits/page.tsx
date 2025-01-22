@@ -5,7 +5,6 @@ import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
