@@ -1,9 +1,19 @@
 import Link from "next/link";
 import { ComponentProps, ReactNode } from "react";
 
-const BlueLink = (props: ComponentProps<typeof Link>) => (
-  <Link className={`text-blue-600 ${props.className}`} {...props} />
-);
+const BlueLink = (props: ComponentProps<typeof Link>) => {
+  const { className, ...others } = props;
+  return <Link className={`text-blue-600 ${className}`} {...others} />;
+};
+const Text = (props: ComponentProps<"p">) => {
+  const { className, ...others } = props;
+  return (
+    <p
+      className={`whitespace-pre max-h-80 overflow-auto p-10 ${className}`}
+      {...others}
+    />
+  );
+};
 
 export const LICENSES: Record<string, ReactNode> = {
   React: (
@@ -18,7 +28,7 @@ export const LICENSES: Record<string, ReactNode> = {
   ),
   "Class Variance Authority": (
     <>
-      <p className="whitespace-pre max-h-96 overflow-auto">{`
+      <Text>{`
       ----- COPY OF THE LICENSE -----
                                  Apache License
                            Version 2.0, January 2004
@@ -212,7 +222,7 @@ export const LICENSES: Record<string, ReactNode> = {
    limitations under the License.
 
    ------ LICENSE END ------
-  `}</p>
+  `}</Text>
       <BlueLink href="https://github.com/joe-bell/cva/blob/main/LICENSE">
         Link to the license
       </BlueLink>
@@ -230,11 +240,13 @@ export const LICENSES: Record<string, ReactNode> = {
   ),
   lucide: (
     <>
-      <p>
-        Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as
-        part of Feather (MIT). All other copyright (c) for Lucide are held by
-        Lucide Contributors 2022.
-      </p>
+      <Text>
+        {
+          "Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as\
+        part of Feather (MIT). All other copyright (c) for Lucide are held by\
+        Lucide Contributors 2022."
+        }
+      </Text>
       <BlueLink href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">
         Link to the license
       </BlueLink>
@@ -259,5 +271,18 @@ export const LICENSES: Record<string, ReactNode> = {
     <BlueLink href="https://github.com/jamiebuilds/tailwindcss-animate/blob/main/LICENSE">
       Link to the license
     </BlueLink>
+  ),
+  favicon: (
+    <Text>
+      {`The favicon was generated using the following graphics from Twitter Twemoji:
+
+- Graphics Title: 1f9ed.svg
+- Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
+- Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/1f9ed.svg
+- Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+
+The favicon was downloaded from the following link: https://favicon.io/emoji-favicons/compass
+`}
+    </Text>
   ),
 };
