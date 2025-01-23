@@ -16,7 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Action Maze",
   description: "An action maze.",
-  view
 };
 
 export const viewport: Viewport = {
