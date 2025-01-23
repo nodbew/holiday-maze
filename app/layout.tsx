@@ -46,8 +46,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex justify-center">
-            <div className="w-3/4 h-screen">{children}</div>
+          <div className="flex justify-center w-dvw h-dvh">
+            <div className="w-3/4 h-dvh">{children}</div>
           </div>
         </ThemeProvider>
       </body>
