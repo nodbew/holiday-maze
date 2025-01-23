@@ -15,7 +15,7 @@ export default function Page() {
       <h1 className="self-start w-full mt-5 p-2 font-bold text-center text-9xl">
         TITLE
       </h1>
-      <div className="absolute top-1/2 left-0 w-full">
+      <div className="fixed top-1/2 left-0 w-full">
         <div className="relative">
           <div className="bg-white absolute w-1/3 left-1/3 top-0 z-10 flex justify-center align-center">
             <Button className="self-end w-1/2 h-10 mb-2 p-2 " asChild>
@@ -37,8 +37,8 @@ export default function Page() {
             </DialogTitle>
             <DialogDescription className="whitespace-pre-line text-black text-lg">
               {`One morning, you woke up in a dungeon...
-              If you make a wrong decision, you will be trapped forever.
-              Select the right options to escape!
+              A single wrong decision will trap you in forever.
+              Choose the right actions to escape!
               
               N.B. 
               Items in your inventory might help...`}
