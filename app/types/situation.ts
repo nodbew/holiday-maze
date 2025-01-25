@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
-import { SITUATIONS } from "../constants/mazeData";
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { SituationNames } from "../constants/mazeData";
 
 type UnremoveableArray<T extends Array<unknown>> = Pick<
   T,
@@ -9,20 +9,20 @@ type UnremoveableArray<T extends Array<unknown>> = Pick<
 export interface Item {
   name: string;
   show: boolean;
+  stackable: boolean;
 }
 export type Inventory = Array<Item>;
 
-export type SituationName = keyof typeof SITUATIONS;
-export type SituationHistory = UnremoveableArray<Array<SituationName>>;
-interface Action {
+export type SituationHistory = UnremoveableArray<Array<SituationNames>>;
+export type Action = {
   description: string;
-  callback: (
-    inv: Inventory,
-    setInv: Dispatch<SetStateAction<Inventory>>,
-    situationHistory: SituationHistory,
-    setSituationHistory: Dispatch<SetStateAction<SituationHistory>>
-  ) => void;
-}
+  component: (props: {
+    inventory: Inventory;
+    setInventory: Dispatch<SetStateAction<Inventory>>;
+    situationHistory: SituationHistory;
+    setSituationHistory: Dispatch<SetStateAction<SituationHistory>>;
+  }) => ReactNode;
+};
 export interface Situation {
   description: string;
   possibleActions: Array<Action>;

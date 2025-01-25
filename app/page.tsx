@@ -11,11 +11,11 @@ import {
 
 export default function Page() {
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       <h1 className="self-start w-full mt-5 p-2 font-bold text-center text-9xl">
         TITLE
       </h1>
-      <div className="mt-1/2 mb-auto w-full">
+      <div className="absolute top-1/2 left-0 w-full">
         <div className="relative">
           <div className="bg-white absolute w-1/3 left-1/3 top-0 z-10 flex justify-center align-center">
             <Button className="self-end w-1/2 h-10 mb-2 p-2" asChild>
