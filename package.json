@@ -1,6 +1,6 @@
 {
   "name": "action-maze",
-  "version": "0.3.2",
+  "version": "0.4.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -42,5 +42,6 @@
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }
