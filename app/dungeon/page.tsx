@@ -36,7 +36,7 @@ export default function Page() {
           Reset
         </Link>
       </Button>
-      <Command className="fixed right-10 top-20 w-2/12 h-2/3 border-black border-2 rounded-md">
+      <Command className="fixed right-10 top-20 w-2/12 h-2/3 border-primary border-2 rounded-md">
         <h2 className="text-bold text-5xl md:text-3xl sm:text-lg p-5 md:p-3 sm:p-1">
           Inventory
         </h2>
@@ -53,7 +53,7 @@ export default function Page() {
       <h4 className="text-center self-center w-2/3 mt-10 p-2 text-5xl">
         {description}
       </h4>
-      <Command className="mb-10 mt-auto w-2/3 h-fit self-center border-black border-2 rounded-md">
+      <Command className="mb-10 mt-auto w-2/3 h-fit self-center border-primary border-2 rounded-md">
         <CommandList className="max-h-none w-full">
           {possibleActions.map(({ component }, idx) => (
             <CommandItem key={idx} className="text-2xl">

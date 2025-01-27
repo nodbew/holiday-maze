@@ -1,4 +1,4 @@
-import { SituationNames } from "@/app/constants/mazeData";
+import { ITEMS, SituationNames } from "@/app/constants/mazeData";
 import { Action, Item, Situation } from "@/app/types/situation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -17,15 +17,14 @@ export function createSituation(
       | {
           type: "next";
           navigate: SituationNames | number;
-          requiredItems?: Array<Item>;
+          requiredItems?: Array<keyof typeof ITEMS>;
           addItems?: Array<Item>;
         }
       | {
           type: "end";
           navigate: (typeof NAVIGATION_TARGET)[keyof typeof NAVIGATION_TARGET];
           message: string;
-          requiredItems?: Array<Item>;
-          addItems?: Array<Item>;
+          requiredItems?: Array<keyof typeof ITEMS>;
         }
       | {
           type: "raw";
@@ -48,8 +47,8 @@ export function createSituation(
           const { description, navigate, requiredItems, addItems } = option;
           // Check if there are necessary items for selecting the option
           const disabled = !(
-            requiredItems?.every((item) =>
-              inventory.some((item2) => item.name === item2.name)
+            requiredItems?.every((itemName) =>
+              inventory.some((item2) => itemName === item2.name)
             ) ?? true
           );
           // Callback to call when the option is selected
@@ -83,7 +82,8 @@ export function createSituation(
 
           return (
             <Button
-              className="bg-transparent w-full h-full justify-start text-black text-3xl hover:bg-transparent shadow-none border-none rounded-none p-0"
+              variant="ghost"
+              className="hover:bg-transparent text-3xl p-0"
               onClick={() => handleClick()}
               disabled={disabled}
             >
@@ -95,13 +95,12 @@ export function createSituation(
         break;
       }
       case "end": {
-        const { description, navigate, requiredItems, addItems, message } =
-          option;
+        const { description, navigate, requiredItems, message } = option;
         const component: Action["component"] = ({ inventory }) => {
           // Check if there are necessary items for selecting the option
           const disabled = !(
-            requiredItems?.every((item) =>
-              inventory.some((item2) => item.name === item2.name)
+            requiredItems?.every((itemName) =>
+              inventory.some((item2) => itemName === item2.name)
             ) ?? true
           );
           let href;
@@ -117,10 +116,20 @@ export function createSituation(
                 "Internal error: Failed to parse the exiting option"
               )}`;
           }
-          return disabled ? (
-            <p className="text-gray-400">{description}</p>
-          ) : (
-            <Link href={href}>{description}</Link>
+          return (
+            <Link
+              href={href}
+              aria-disabled="true"
+              tabIndex={-1}
+              className={`text-3xl ${disabled ? "opacity-50" : ""}`}
+              onClick={(e) => {
+                if (disabled) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              {description}
+            </Link>
           );
         };
         possibleActions.push({ description, component });
