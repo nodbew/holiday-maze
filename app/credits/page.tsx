@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { LICENSES } from "./licenses";
+import { LICENSES } from "../constants/licenses";
 import { Command, CommandItem, CommandList } from "@/components/ui/command";
 import {
   Dialog,
@@ -16,7 +16,7 @@ export default function Page() {
       <h5 className="mb-2">
         This project uses the following open source libraries:
       </h5>
-      <Command className="h-fit max-h-4/5 mb-5">
+      <Command className="h-fit max-h-4/5 mb-5 bg-transparent">
         <CommandList className="overflow-auto max-h-none">
           {Object.entries(LICENSES)
             .toSorted(([n1, _], [n2, __]) => n1.localeCompare(n2))
