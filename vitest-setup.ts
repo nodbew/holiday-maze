@@ -36,7 +36,7 @@ Object.assign(window.HTMLElement.prototype, {
 vi.mock("react-confetti", () => {
   return {
     __esModule: true,
-    default: ({ ...props }) => null,
+    default: (_: unknown) => null,
   };
 });
 

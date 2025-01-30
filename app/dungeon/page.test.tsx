@@ -36,7 +36,7 @@ describe.concurrent("All credits are properly shown on the screen", () => {
     expect(
       screen.getByRole("heading", { hidden: false, level: 1 })
     ).toBeInTheDocument());
-  it("The actions are shown correctly"),
+  it("The actions are shown correctly",
     () => {
       // Command component has a label, but it's empty because the page doesn't assign it
       const actions = screen.getByLabelText("");
@@ -54,5 +54,5 @@ describe.concurrent("All credits are properly shown on the screen", () => {
           expect(action.querySelector("button")?.onclick).toBeDefined();
         }
       });
-    };
+    });
 });
