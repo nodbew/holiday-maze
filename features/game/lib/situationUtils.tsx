@@ -1,5 +1,6 @@
-import { ITEMS, SituationNames } from "@/features/game/data";
-import { Action, Item, Situation } from "@/features/game/types/inventory";
+import { ITEMS, SituationNames } from "../data";
+import type { Item } from "../types/inventory";
+import type { Action, Situation } from "../types/situation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -18,7 +19,7 @@ export function createSituation(
           type: "next";
           navigate: SituationNames | number;
           requiredItems?: Array<keyof typeof ITEMS>;
-          addItems?: Array<Item>;
+          addItems?: Array<Item<keyof typeof ITEMS>>;
         }
       | {
           type: "end";

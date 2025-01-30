@@ -33,6 +33,13 @@ Object.assign(window.HTMLElement.prototype, {
   hasPointerCapture: vi.fn(),
 });
 
+vi.mock("react-confetti", () => {
+  return {
+    __esModule: true,
+    default: ({ ...props }) => null,
+  };
+});
+
 // runs a cleanup after each test case (e.g. clearing jsdom)
 afterEach(() => {
   cleanup();

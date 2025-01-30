@@ -1,8 +1,9 @@
-import Page from "@/app/credits/page";
-import { LICENSES } from "@/features/licensing/data";
+import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+
+import Page from "./page";
+import { LICENSES } from "@/features/licensing/data";
 
 describe.concurrent("All credits are properly shown on the screen", () => {
   render(<Page />);
@@ -17,7 +18,8 @@ describe.concurrent("All credits are properly shown on the screen", () => {
   });
 
   it("All credit contents are shown", () => {
-    Object.keys(LICENSES).forEach(async (packageName) => { // Added async here
+    Object.keys(LICENSES).forEach(async (packageName) => {
+      // Added async here
       const button = screen.getByText(packageName);
       user.click(button);
 

@@ -35,13 +35,13 @@ export default function Page() {
     <div className="flex flex-col h-full">
       <ResetButton className="fixed left-5 top-5 p-5" />
       <InventoryBox
-        className="fixed right-10 top-20 w-2/12 h-2/3 border-primary border-2 rounded-md"
+        className="fixed right-10 top-20 w-2/12 h-2/3 border-primary border-2 rounded-md bg-transparent"
         inventory={inventory}
       />
 
-      <h4 className="text-center self-center w-2/3 mt-10 p-2 text-5xl">
+      <h1 className="text-center self-center w-2/3 mt-10 p-2 text-5xl">
         {description}
-      </h4>
+      </h1>
       <Actions
         className="mb-10 mt-auto w-2/3 h-fit self-center border-primary border-2 rounded-md"
         actions={possibleActions}
