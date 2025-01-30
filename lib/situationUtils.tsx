@@ -1,5 +1,5 @@
-import { ITEMS, SituationNames } from "@/app/constants/mazeData";
-import { Action, Item, Situation } from "@/app/types/situation";
+import { ITEMS, SituationNames } from "@/features/game/data";
+import { Action, Item, Situation } from "@/features/game/types/inventory";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { redirect } from "next/navigation";

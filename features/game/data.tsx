@@ -1,5 +1,6 @@
-import { Item, Situation } from "../types/situation";
+import { Item } from "./types/inventory";
 import { createSituation, NAVIGATION_TARGET } from "@/lib/situationUtils";
+import { Situation } from "./types/situation";
 
 export const ITEMS = {
   タケコプター: { name: "タケコプター", show: true, stackable: true },

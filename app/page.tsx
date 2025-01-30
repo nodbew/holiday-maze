@@ -8,6 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import InfoDialog from "@/features/informing/components/InfoDialog";
+import CreditsPageLink from "@/features/informing/components/CreditsPageLink";
 
 export default function Page() {
   return (
@@ -27,29 +29,15 @@ export default function Page() {
         </div>
       </div>
       <div className="flex flex-row mb-4 mt-auto h-[12%]">
-        <Dialog>
-          <DialogTrigger className="ml-40 mr-auto w-1/12 h-full bg-primary text-accent rounded-full">
-            info
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="text-center text-3xl border-b-2 border-primary pb-1 mb-3">
-                Story
-              </DialogTitle>
-              <DialogDescription className="whitespace-pre-line text-primary text-lg">
-                {`One morning, you woke up in a dungeon...
-              A single wrong decision will trap you in forever.
-              Choose the right actions to escape!
-              
-              N.B. 
-              Items in your inventory might help...`}
-              </DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-        <Button className="mr-40 ml-auto w-1/12 h-full bg-primary text-accent rounded-full" asChild>
-          <Link href="/credits">Credits</Link>
-        </Button>
+        <InfoDialog
+          slotProps={{
+            DialogTrigger: {
+              className:
+                "ml-40 mr-auto w-1/12 h-full bg-primary text-accent rounded-full",
+            },
+          }}
+        />
+        <CreditsPageLink className="mr-40 ml-auto w-1/12 h-full bg-primary text-accent rounded-full" />
       </div>
     </div>
   );

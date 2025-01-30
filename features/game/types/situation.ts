@@ -1,18 +1,11 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { SituationNames } from "../constants/mazeData";
+import { Inventory } from "./inventory";
+import { SituationNames } from "../data";
 
 type UnremoveableArray<T extends Array<unknown>> = Pick<
   T,
   Exclude<keyof T, "splice" | "pop" | "shift" | "unshift">
 >;
-
-export interface Item {
-  name: string;
-  show: boolean;
-  stackable: boolean;
-}
-export type Inventory = Array<Item>;
-
 export type SituationHistory = UnremoveableArray<Array<SituationNames>>;
 export type Action = {
   description: string;
