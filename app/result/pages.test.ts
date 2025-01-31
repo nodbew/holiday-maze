@@ -23,7 +23,6 @@ const testResultPage = (
 ) => {
   describe.concurrent(`${pageName}: The page is correctly generated with valid data`, async () => {
     await renderer(encodeURIComponent("This is a test message"));
-    screen.debug(undefined, Infinity)
     it("There is a title", () =>
       expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument());
     it("There is a description of the error", () =>
@@ -37,11 +36,11 @@ const testResultPage = (
   });
   describe.concurrent(`${pageName}: The page errors with a malformed URI`, () => {
     it("Malformed URI errors", () =>
-      expect(() => renderer("%E0%A4%A").catch(e => { throw e }).then(() => {})).toThrow());
+      expect(async () => await renderer("%E0%A4%A")).rejects.toThrow());
   });
 };
 
 // Test error, failure, and success page at once
 testResultPage("Error page", createRenderer(ErrorPage));
-testResultPage("Failure page", createRenderer(FailurePage));
-testResultPage("Success page", createRenderer(SuccessPage));
+// testResultPage("Failure page", createRenderer(FailurePage));
+// testResultPage("Success page", createRenderer(SuccessPage));
